@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Used Car Price Prediction</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">   
@@ -44,35 +45,6 @@
       <div class="col-md-6 offset-md-3"> 
         <div id="prediction-form">
           <form onsubmit="makePredictions(event);" class="needs-validation" novalidate> 
-
-            <div class="mb-3">
-              <label for="miles" class="form-label">Miles:</label>
-              <input type="number" class="form-control" name="miles" id="miles" min="0" required> 
-            </div>
-
-            <div class="mb-3">
-              <label for="year" class="form-label">Year:</label>
-              <input type="number" class="form-control" name="year" id="year" min="1900" max="2024" required> 
-            </div>
-
-            <div class="mb-3">
-              <label for="vehicle_type" class="form-label">Vehicle Type:</label>
-              <select class="form-select" name="vehicle_type" id="vehicle_type" required> 
-                  <option value="">Select Vehicle Type</option>
-                  <option value="Car">Car</option>
-                  <option value="Truck">Truck</option>
-
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="transmission" class="form-label">Transmission:</label>
-              <select class="form-select" name="transmission" id="transmission" required> 
-                <option value="">Select Transmission</option>
-                <option value="Automatic">Automatic</option>
-                <option value="Manual">Manual</option>
-              </select>
-            </div>
 
             <div class="mb-3">
               <label for="make" class="form-label">Make:</label>
@@ -124,7 +96,7 @@
                 </select>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3"></div>
               <label for="body_type" class="form-label">Body Type:</label>
               <select class="form-select" name="body_type" id="body_type" required> 
                 <option value="">Select Body Type</option>
@@ -140,6 +112,35 @@
                 <option value="Wagon">Wagon</option>
                 <option value="Mini-van">Mini-van</option>
                 <option value="Other">Other</option>
+              </select>
+            </div>
+            
+            <div class="mb-3">
+              <label for="miles" class="form-label">Miles:</label>
+              <input type="number" class="form-control" name="miles" id="miles" min="0" required> 
+            </div>
+
+            <div class="mb-3">
+              <label for="year" class="form-label">Year:</label>
+              <input type="number" class="form-control" name="year" id="year" min="1900" max="2024" required> 
+            </div>
+
+            <div class="mb-3">
+              <label for="vehicle_type" class="form-label">Vehicle Type:</label>
+              <select class="form-select" name="vehicle_type" id="vehicle_type" required> 
+                  <option value="">Select Vehicle Type</option>
+                  <option value="Car">Car</option>
+                  <option value="Truck">Truck</option>
+
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="transmission" class="form-label">Transmission:</label>
+              <select class="form-select" name="transmission" id="transmission" required> 
+                <option value="">Select Transmission</option>
+                <option value="Automatic">Automatic</option>
+                <option value="Manual">Manual</option>
               </select>
             </div>
 
@@ -163,6 +164,20 @@
                 <option value="Hybrid">Hybrid</option>
                 <option value="Electric">Electric</option>
                 <option value="Diesel">Diesel</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="engine_size" class="form-label">Engine Size (Category):</label>
+              <select class="form-select" name="engine_size" id="engine_size" required>
+                <option value="">Select Engine Size</option>
+                <option value="1">1 (0.1 - 2 liters)</option>
+                <option value="2">2 (2 - 3 liters)</option>
+                <option value="3">3 (3 - 4 liters)</option>
+                <option value="4">4 (4 - 5 liters)</option>
+                <option value="5">5 (5 - 6 liters)</option>
+                <option value="6">6 (6 - 7 liters)</option>
+                <option value="7">7 (7 - 8 liters)</option>
               </select>
             </div>
 
