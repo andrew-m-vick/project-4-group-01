@@ -1,0 +1,258 @@
+@charset "UTF-8";
+
+/*!
+ * Bootswatch v5.3.3 (https://bootswatch.com)
+ * Theme: lux
+ * Copyright 2012-2024 Thomas Park
+ * Licensed under MIT
+ * Based on Bootstrap
+ */
+
+/*!
+ * Bootstrap  v5.3.3 (https://getbootstrap.com/)
+ * Copyright 2011-2024 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700&display=swap");
+
+:root,
+[data-bs-theme="light"] {
+  --bs-body-font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 300;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #55595c;
+  --bs-body-bg: #fff;
+
+  --bs-emphasis-color: #000;
+  --bs-secondary-color: rgba(85, 89, 92, 0.75);
+  --bs-tertiary-color: rgba(85, 89, 92, 0.5);
+  --bs-tertiary-bg: #f8f9fa;
+
+  --bs-border-width: 1px;
+  --bs-border-color: #eceeef;
+
+  --bs-link-color: #1a1a1a;
+  --bs-link-hover-color: #151515;
+  --bs-link-decoration: underline;
+  --bs-code-color: #e83e8c;
+}
+
+[data-bs-theme="dark"] {
+  --bs-body-color: #eceeef;
+  --bs-body-bg: #1a1a1a;
+  --bs-emphasis-color: #fff;
+  --bs-secondary-color: rgba(236, 238, 239, 0.75);
+  --bs-tertiary-color: rgba(236, 238, 239, 0.5);
+  --bs-tertiary-bg: #272a2d;
+  --bs-border-color: #55595c;
+  --bs-link-color: #767676;
+  --bs-link-hover-color: #919191;
+  --bs-code-color: #f18bba;
+}
+
+body {
+  margin: 0;
+  padding-top: 70px;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+h6,
+.h6,
+h5,
+.h5,
+h4,
+.h4,
+h3,
+.h3,
+h2,
+.h2,
+h1,
+.h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--bs-link-color);
+  text-decoration: var(--bs-link-decoration);
+}
+
+a:hover {
+  color: var(--bs-link-hover-color);
+}
+
+code {
+  color: var(--bs-code-color);
+}
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.form-control {
+  color: var(--bs-body-color);
+  background-color: #f7f7f9;
+  border: 0 solid var(--bs-border-color);
+}
+
+.form-control:focus {
+  color: var(--bs-body-color);
+  background-color: #f7f7f9;
+  border-color: #8d8d8d;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(26, 26, 26, 0.25);
+}
+
+.btn {
+  font-weight: 600;
+  color: var(--bs-body-color);
+  background-color: transparent;
+  border: 0 solid transparent;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.btn-primary:hover {
+  color: #fff;
+}
+
+.btn-check:checked + .btn-primary,
+:not(.btn-check) + .btn-primary:active,
+.btn-primary:first-child:active,
+.btn-primary.active,
+.btn-primary.show {
+  color: #fff;
+}
+
+.btn-outline-secondary {
+  color: #919aa1;
+  border-color: #919aa1;
+}
+
+.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: #ced4da;
+  border-color: #ced4da;
+}
+
+.dropdown-item {
+  font-weight: 300;
+  color: var(--bs-body-color);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: var(--bs-body-color);
+}
+
+.nav-link {
+  color: var(--bs-body-color);
+  text-decoration: none;
+}
+
+.nav-link:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(26, 26, 26, 0.25);
+}
+
+.navbar {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.bg-light {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:not([disabled]):not(.disabled):active,
+.btn-warning:focus {
+  color: #fff;
+}
+
+th {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.table th,
+.table td {
+  padding: 1.5rem;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.75rem;
+}
+
+.form-check-input:checked {
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.form-check-input:indeterminate {
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.list-group-item {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+.list-group-item-action {
+  color: var(--bs-secondary-color);
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+  color: var(--bs-emphasis-color);
+}
+
+.list-group-item.active {
+  color: #fff;
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.navbar {
+  position: fixed; /* Make the navbar fixed */
+  top: 0; /* Position it at the top */
+  width: 100%; /* Make it span the full width */
+  z-index: 100; /* Ensure it stays on top of other elements */
+}
