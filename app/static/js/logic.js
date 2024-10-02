@@ -51,7 +51,9 @@ function makePredictions(event) {
 
             // You don't need to parse the prediction here since it's already formatted in app.py
             var prediction = returnedData["prediction"]; 
-            $("#output").text(`Predicted Car Price: ${prediction}`); 
+            $("#price").text(`Predicted Car Price: ${prediction}`);
+            $("#prediction-result").show();
+            $("#prediction-form").hide();
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
