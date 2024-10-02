@@ -1,48 +1,32 @@
+import pickle
 import pandas as pd
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
-from sklearn.pipeline import Pipeline
-from sklearn.compose import ColumnTransformer
 
-def preprocess_input(input_data):
-    # Convert the input data to a DataFrame
-    data = pd.DataFrame({
-        "miles": [input_data["miles"]],
-        "year": [input_data["year"]],
-        "make": [input_data["make"]],
-        "body_type": [input_data["body_type"]],
-        "vehicle_type": [input_data["vehicle_type"]],
-        "drivetrain": [input_data["drivetrain"]],
-        "transmission": [input_data["transmission"]],
-        "fuel_type": [input_data["fuel_type"]],
-        "engine_size": [input_data["engine_size"]],
-        "engine_block": [input_data["engine_block"]],
-        "state": [input_data["state"]]
-    })
+class ModelHelper:
+    def __init__(self):
+        self.model_path = "car_model.pkl"  # Update if your path is different
+        self.model = self.load_model()
 
-    # Preprocess the data
-    # Define preprocessing for numeric features
-    numeric_features = ['miles', 'year', 'engine_size']
-    numeric_transformer = Pipeline(steps=[
-        ('scaler', StandardScaler())])
+    def load_model(self):
+        with open(self.model_path, 'rb') as f:
+            model = pickle.load(f)
+        return model
 
-    # Define preprocessing for the binary features
-    binary_features = ['vehicle_type', 'transmission']
-    binary_transformer = Pipeline(steps=[
-        ('label', OrdinalEncoder())])
+    def makePredictions(self, miles, year, vehicle_type, transmission, make, body_type, drivetrain, fuel_type, engine_block, state):
+        # Create a DataFrame
+        data = {
+            'miles': [miles],
+            'year': [year],
+            'vehicle_type': [vehicle_type],
+            'transmission': [transmission],
+            'make': [make],
+            'body_type': [body_type],
+            'drivetrain': [drivetrain],
+            'fuel_type': [fuel_type],
+            'engine_block': [engine_block],
+            'state': [state]
+        }
+        df = pd.DataFrame(data)
 
-    # Define preprocessing for categorical features
-    categorical_features = ['make', 'body_type', 'drivetrain', 'fuel_type', 'engine_block', 'state']
-    categorical_transformer = Pipeline(steps=[
-        ('onehot', OneHotEncoder(handle_unknown='ignore'))])
-
-    # Combine preprocessing for numeric and categorical features
-    preprocessor = ColumnTransformer(
-        transformers=[
-            ('num', numeric_transformer, numeric_features),
-            ('binary', binary_transformer, binary_features),
-            ('cat', categorical_transformer, categorical_features)])
-
-    # Transform the data
-    data = preprocessor.fit_transform(data)
-
-    return data
+        # Make predictions
+        prediction = self.model.predict(df)
+        return prediction

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Used Car Price Prediction</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">   
+
+  <link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet"> 
+  <link href="./static/css/static.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>   
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="static/images/cartoon_car.png" height="30px"></a>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="/predict">Predict Car Price</a> 
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tableau">Tableau Story</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about_us">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/resources">Resources</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br/>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <br><br>
+        <h1>Used Car Price Prediction</h1>
+        <br><br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3"> 
+        <div id="prediction-form">
+          <form onsubmit="makePredictions(event);" class="needs-validation" novalidate> 
+
+            <div class="mb-3">
+              <label for="miles" class="form-label">Miles:</label>
+              <input type="number" class="form-control" name="miles" id="miles" min="0" required> 
+            </div>
+
+            <div class="mb-3">
+              <label for="year" class="form-label">Year:</label>
+              <input type="number" class="form-control" name="year" id="year" min="1900" max="2024" required> 
+            </div>
+
+            <div class="mb-3">
+              <label for="vehicle_type" class="form-label">Vehicle Type:</label>
+              <select class="form-select" name="vehicle_type" id="vehicle_type" required> 
+                  <option value="">Select Vehicle Type</option>
+                  <option value="Car">Car</option>
+                  <option value="Truck">Truck</option>
+
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="transmission" class="form-label">Transmission:</label>
+              <select class="form-select" name="transmission" id="transmission" required> 
+                <option value="">Select Transmission</option>
+                <option value="Automatic">Automatic</option>
+                <option value="Manual">Manual</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="make" class="form-label">Make:</label>
+              <select class="form-select" name="make" id="make" required> 
+                <option value="">Select Make</option>
+                <option value="Acura">Acura</option>
+                <option value="Alfa Romeo">Alfa Romeo</option>
+                <option value="Aston Martin">Aston Martin</option>
+                <option value="Audi">Audi</option>
+                <option value="Bentley">Bentley</option>
+                <option value="BMW">BMW</option>
+                <option value="Bugatti">Bugatti</option>
+                <option value="Buick">Buick</option>
+                <option value="Cadillac">Cadillac</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Chrysler">Chrysler</option>
+                <option value="Dodge">Dodge</option>
+                <option value="Ferrari">Ferrari</option>
+                <option value="Fiat">Fiat</option>
+                <option value="Ford">Ford</option>
+                <option value="Genesis">Genesis</option>
+                <option value="GMC">GMC</option>
+                <option value="Honda">Honda</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Infiniti">Infiniti</option> 
+                <option value="Jaguar">Jaguar</option>
+                <option value="Jeep">Jeep</option>
+                <option value="Kia">Kia</option>
+                <option value="Lamborghini">Lamborghini</option>
+                <option value="Land Rover">Land Rover</option>
+                <option value="Lexus">Lexus</option>
+                <option value="Lincoln">Lincoln</option>
+                <option value="Maserati">Maserati</option>
+                <option value="Mazda">Mazda</option>
+                <option value="McLaren">McLaren</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Mini">Mini</option>
+                <option value="Mitsubishi">Mitsubishi</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Porsche">Porsche</option>
+                <option value="Ram">Ram</option>
+                <option value="Rolls-Royce">Rolls-Royce</option>
+                <option value="Subaru">Subaru</option>
+                <option value="Tesla">Tesla</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="Volvo">Volvo</option>
+                <option value="Other">Other</option> 
+                </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="body_type" class="form-label">Body Type:</label>
+              <select class="form-select" name="body_type" id="body_type" required> 
+                <option value="">Select Body Type</option>
+                <option value="Coupe">Coupe</option>
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Pickup">Pickup</option> 
+
+                <option value="Hatchback">Hatchback</option>
+                <option value="Cargo Van">Cargo Van</option>
+                <option value="Convertible">Convertible</option>
+                <option value="Van">Van</option>
+                <option value="Wagon">Wagon</option>
+                <option value="Mini-van">Mini-van</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="drivetrain" class="form-label">Drivetrain:</label>
+              <select class="form-select" name="drivetrain" id="drivetrain" required> 
+                <option value="">Select Drivetrain</option>
+                <option value="4WD">4WD</option>
+                <option value="FWD">FWD</option>
+                <option value="RWD">RWD</option>
+                <option value="AWD">AWD</option>
+              </select> 
+
+            </div>
+
+            <div class="mb-3">
+              <label for="fuel_type" class="form-label">Fuel Type:</label>
+              <select class="form-select" name="fuel_type" id="fuel_type" required> 
+                <option value="">Select Fuel Type</option>
+                <option value="Gas">Gas</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="Electric">Electric</option>
+                <option value="Diesel">Diesel</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="engine_block" class="form-label">Engine Block:</label>
+              <select class="form-select" name="engine_block" id="engine_block" required> 
+                <option value="">Select Engine Block</option>
+                <option value="V">V</option>
+                <option value="I">I</option>
+                <option value="H">H</option>
+                <option value="W">W</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="state" class="form-label">State:</label>
+              <select class="form-select" name="state" id="state" required>
+                <option value="">Select State</option>
+                <option value="AK">AK</option>
+                <option value="AL">AL</option>
+                <option value="AR">AR</option>
+                <option value="AZ">AZ</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DC">DC</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="IA">IA</option>
+            
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="MA">MA</option>
+                <option value="MD">MD</option>
+                <option value="ME">ME</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MO">MO</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="NC">NC</option>
+                <option value="ND">ND</option>
+            
+                <option value="NE">NE</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NV">NV</option>
+                <option value="NY">NY</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VA">VA</option>
+                <option value="VT">VT</option>
+                <option value="WA">WA</option>
+                <option value="WI">WI</option>
+                <option value="WV">WV</option>
+                <option value="WY">WY</option>
+              </select>
+            
+            </div>
+
+            <div class="d-grid gap-2 mb-5">
+              <button class="btn btn-primary" type="submit">Predict</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="prediction-result" style="display: none;"> 
+          <h2>Predicted Price: <span id="price"></span></h2> 
+          <br>
+          <a href="/predict" class="btn btn-primary" style="margin-bottom: 20px;">Predict Another Car</a> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+</body>
+</html>
