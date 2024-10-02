@@ -70,7 +70,7 @@ $(document).ready(function () {
   
         // You don't need to parse the prediction here since it's already formatted in app.py
         var prediction = returnedData["prediction"];
-        $("#price").text(`Predicted Car Price: ${prediction}`);
+        $("#price").text(`${prediction}`);
         $("#prediction-result").show();
         $("#prediction-form").hide();
       },
