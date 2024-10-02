@@ -39,18 +39,19 @@ def make_predictions():
     print(content)
 
     # parse
+    make = content["make"]
+    body_type = content["body_type"]
     miles = float(content["miles"])
     year = float(content["year"])
     vehicle_type = content["vehicle_type"]
     transmission = content["transmission"]
-    make = content["make"]
-    body_type = content["body_type"]
     drivetrain = content["drivetrain"]
     fuel_type = content["fuel_type"]
+    engine_size = content["engine_size"]  # Include engine_size
     engine_block = content["engine_block"]
     state = content["state"]
 
-    preds = modelHelper.makePredictions(miles, year, vehicle_type, transmission, make, body_type, drivetrain, fuel_type, engine_block, state)
+    preds = modelHelper.makePredictions(make, body_type, miles, year, vehicle_type, transmission, drivetrain, fuel_type, engine_size, engine_block, state)
 
     # You may want to format the prediction before sending it back
     formatted_prediction = f"${preds[0]:.2f}"  # Example: format as a dollar amount
