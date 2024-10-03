@@ -18,7 +18,7 @@
       <a class="navbar-brand" href="/"><img src="static/images/cartoon_car.png" height="30px"></a>
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="/predict">Predict Car Price</a> 
+          <a class="nav-link active" href="/predict">Predict Car Price</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/tableau">Tableau Story</a>
@@ -28,6 +28,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/resources">Resources</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/analysis">Project Analysis</a>
         </li>
       </ul>
     </div>
@@ -168,7 +171,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="engine_size" class="form-label">Engine Size (Category):</label>
+              <label for="engine_size" class="form-label">Engine Size:</label>
               <select class="form-select" name="engine_size" id="engine_size" required>
                 <option value="">Select Engine Size</option>
                 <option value="1">1 (0.1 - 2 liters)</option>
@@ -259,10 +262,10 @@
           </form>
         </div>
 
-        <div id="prediction-result" style="display: none;"> 
+        <div id="prediction-result"> 
           <h2>Predicted Price: <span id="price"></span></h2> 
           <br>
-          <a href="/predict" class="btn btn-primary" style="margin-bottom: 20px;">Predict Another Car</a> 
+          <a href="/predict" class="btn btn-primary" id="predict-another-button" style="margin-bottom: 20px; display: none;">Predict Another Car</a> 
         </div>
       </div>
     </div>

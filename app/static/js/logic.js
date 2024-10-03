@@ -72,7 +72,8 @@ $(document).ready(function () {
         var prediction = returnedData["prediction"];
         $("#price").text(`${prediction}`);
         $("#prediction-result").show();
-        $("#prediction-form").hide();
+        $("#predict-another-button").show();
+        // $("#prediction-form").hide();
       },
       error: function (XMLHttpRequest, textStatus, errorThrown) {
         alert("Status: " + textStatus);

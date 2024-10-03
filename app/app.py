@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from modelHelper import ModelHelper
+import numpy as np
 
 # Create an instance of Flask
 app = Flask(__name__)
@@ -29,6 +30,11 @@ def resources():
     # Return template and data
     return render_template("resources.html")
 
+@app.route("/analysis")
+def analyis():
+    # Return template and data
+    return render_template("analysis.html")
+
 @app.route("/predict")  # Changed route to /predict
 def predict():
     return render_template("index.html")  # Render index.html for the /predict route
@@ -53,8 +59,11 @@ def make_predictions():
 
     preds = modelHelper.makePredictions(make, body_type, miles, year, vehicle_type, transmission, drivetrain, fuel_type, engine_size, engine_block, state)
 
+    # Unlog the prediction if necessary (assuming preds is logged)
+    unlogged_prediction = np.exp(preds[0])  # Apply np.exp to the model's output
+    
     # You may want to format the prediction before sending it back
-    formatted_prediction = f"${preds[0]:.2f}"  # Example: format as a dollar amount
+    formatted_prediction = f"${unlogged_prediction:,.2f}"  # Example: format as a dollar amount
 
     return jsonify({"ok": True, "prediction": formatted_prediction})
 
