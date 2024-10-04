@@ -12,12 +12,16 @@ This project aims to predict used car prices based on features like make, model,
 - Create an interactive dashboard to visualize and compare car prices based on various factors.
 - Provide accessible and user-friendly tools for navigating the used car market.
 
+![predict](images/predict.png)
+
 ## Data and Methodology
 
 - Dataset: Large dataset of used car information from over 65,000 U.S. dealerships.
 - Tools: Python, Pandas, Scikit-learn, Flask, Tableau.
 - Machine Learning Models: Linear Regression, Ridge, Lasso, Elastic Net, Decision Tree Regressor, Random Forest Regressor, AdaBoost Regressor, Extra Trees Regressor, Gradient Boosting Regressor.
 - Visualization: Interactive dashboard with various filters and comparisons.
+
+![tableau](images/tableau.png)
 
 ## Key Findings
 
