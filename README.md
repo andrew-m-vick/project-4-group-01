@@ -2,7 +2,7 @@ https://carpriceexpert.pythonanywhere.com
 
 # Used Car Price Predictions
 
-![link](Image 1)
+![images/home.png](home)
 
 This project aims to predict used car prices based on features like make, model, year, mileage, etc. The goal is to provide insights to consumers and dealerships for making informed decisions about buying or selling used cars.
 
